@@ -42,6 +42,13 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 find_package (OpenGL REQUIRED)
 
+add_custom_command(
+    OUTPUT ${PROJECT_SOURCE_DIR}/../../src/glew.c ${PROJECT_SOURCE_DIR}/../../src/glewinfo.c ${GLEW_DIR}/include/GL/wglew.h ${GLEW_DIR}/include/GL/glew.h ${GLEW_DIR}/include/GL/glxew.h
+    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/../../auto
+    COMMAND ${CMAKE_MAKE_PROGRAM}
+)
+
+
 # X11 required except for Windows and Apple OSX platforms
 if (NOT WIN32 AND NOT APPLE)
   find_package (X11)
